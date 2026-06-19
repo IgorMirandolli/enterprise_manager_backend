@@ -37,10 +37,28 @@ Inicie a API:
 uvicorn app.main:app --reload
 ```
 
+Se o `--reload` gerar erro de permissao no Windows, rode sem reload:
+
+```powershell
+uvicorn app.main:app
+```
+
 Depois acesse:
 
 ```text
 http://127.0.0.1:8000/docs
+```
+
+Para testar a conexao com o MySQL pelo terminal:
+
+```powershell
+python -m app.db.check_connection
+```
+
+Com a API rodando, tambem e possivel testar pelo endpoint:
+
+```text
+http://127.0.0.1:8000/api/v1/health/db
 ```
 
 ## Estrutura
@@ -57,4 +75,3 @@ app/
 tests/            Testes automatizados
 migrations/       Migrations do Alembic
 ```
-
