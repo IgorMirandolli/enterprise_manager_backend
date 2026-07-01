@@ -61,6 +61,38 @@ Com a API rodando, tambem e possivel testar pelo endpoint:
 http://127.0.0.1:8000/api/v1/health/db
 ```
 
+## Migrations com Alembic
+
+O schema atual do banco foi registrado como baseline na revision:
+
+```text
+a44392746a14_baseline_existing_schema
+```
+
+Para verificar a migration atual do banco:
+
+```powershell
+python -m alembic current
+```
+
+Para verificar se os models e o banco estao sincronizados:
+
+```powershell
+python -m alembic check
+```
+
+Quando alterar models SQLAlchemy, gere uma nova migration:
+
+```powershell
+python -m alembic revision --autogenerate -m "descricao da mudanca"
+```
+
+Revise o arquivo gerado em `migrations/versions/` e aplique:
+
+```powershell
+python -m alembic upgrade head
+```
+
 ## Estrutura
 
 ```text
